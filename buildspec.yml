@@ -2,10 +2,15 @@ version: 0.2
 
 phases:
   pre_build:
-    commands:      
+    commands:
       - echo Logging in to Amazon ECR...
-      - $(aws ecr get-login --no-include-email --region eu-west-2)    
-      - echo "Logging in to Amazon ECR..."
-      - echo "installing docker compose on container with Ubuntu base image acting as Build server"
- 
- 
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...          
+         
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
