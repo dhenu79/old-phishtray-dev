@@ -6,6 +6,7 @@ phases:
       - echo "Hey GOOD DAY !!!! "
       - echo "Logging in to Amazon ECR..."
       - echo "my test"
+      - echo "final echo "
 
   build:
     commands:
