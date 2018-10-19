@@ -2,7 +2,9 @@ version: 0.2
 
 phases:
   pre_build:
-    commands:
+    commands:      
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)    
       - echo "Logging in to Amazon ECR..."
       - echo "installing docker compose on container with Ubuntu base image acting as Build server"
       - sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
