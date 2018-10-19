@@ -1,0 +1,6 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "installing docker compose on container with Ubuntu base image acting as Build server"
