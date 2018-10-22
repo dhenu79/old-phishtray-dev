@@ -3,7 +3,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo "LOOKING GOOD HA @@@@@@@@@@ "
+      - echo "LOOKING GOOD HA @@@@@@@@@@ Hello Succeeded  "
       - echo "Hey GOOD DAY !!!!!!!!! "
       - echo "Logging in to Amazon ECR....."
       - echo "my test"
