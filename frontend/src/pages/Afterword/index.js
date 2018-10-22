@@ -109,7 +109,7 @@ class Afterword extends React.Component<Props, State> {
             decision-making process of planning, coordinating and uncertainty
             management. If you have completed the exercise in full you will find
             an automated report below which describes your strengths and areas
-            for improvements associated with these skills.
+            for improvements associated with these skills..
           </MarginBottomParagraph>
           {this.props.afterwordMessage && (
             <MarkdownContainer>
