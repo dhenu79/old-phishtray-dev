@@ -3,7 +3,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo "GitHUB WebHook Attached LETS SEE IN ACTION ----- Again 1 MORE TIME Hi Jonathan "
+      - echo "GitHUB WebHook Attached LETS SEE IN ACTION ----- Again "
       - echo "Hey GOOD DAY !!!!!!!!! "
       - echo "Logging in to Amazon ECR....."
       - echo "my test"
