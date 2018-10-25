@@ -3,11 +3,11 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo "Yes in Action ....."
-      - echo "Hey GOOD DAY !!!!!!!!! "
-      - echo "Logging in to Amazon ECR....."
-      - echo "my test"
-      - echo "final echo "
+      - echo "Morning"
+      - echo "Morning "
+      - echo "Morning"
+      - echo "Morning"
+      - echo "Morning "
 
   build:
     commands:
