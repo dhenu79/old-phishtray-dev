@@ -3,15 +3,11 @@ version: 0.2
 phases:
   install:
     commands:
-
       - echo "Installing docker compose to run Docker compose UP"
       - sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
       - sudo chmod +x /usr/local/bin/docker-compose
       - docker-compose --version
-      - echo " "
-      - echo " "
-      - echo " "
-      - echo " "
+      - echo " ******************************************************************************************************"
   pre_build:
     commands:
 
@@ -20,14 +16,13 @@ phases:
       - echo " ******************************************************************************************************"
   build:
     commands:
-      - echo " ******************************************************************************************************"
       - echo "Build started on `date`"
       - echo "Building the Docker image.."      
       - echo " ******************************************************************************************************"
          
   post_build:
     commands:
-      - echo " ******************************************************************************************************"
+
       - echo "Build completed on `date`"
       - echo "Pushing the Docker image..."
       - echo " ******************************************************************************************************"
