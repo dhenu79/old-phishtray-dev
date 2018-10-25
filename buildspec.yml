@@ -10,9 +10,8 @@ phases:
       - echo  ******************************************************************************************************
   pre_build:
     commands:
-
-      - echo "Morning"
-      - echo "Morning "
+      - echo Logging in to Amazon ECR ... 
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION  --no-include-email)
       - echo  ******************************************************************************************************
   build:
     commands:
