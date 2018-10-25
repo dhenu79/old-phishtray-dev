@@ -12,7 +12,8 @@ phases:
     commands:
       - echo Logging in to Amazon ECR ...
       - docker --version
-      - Dockerbuild .
+      - docker build -t .
+      - docker image ls
    #   - $(aws ecr get-login --region eu-west-2  --no-include-email)
       - echo  ******************************************************************************************************
   build:
