@@ -5,9 +5,7 @@ phases:
     commands:
       - echo "Morning"
       - echo "Morning "
-      - echo "Morning"
-      - echo "Morning"
-      - echo "Morning "
+
 
   build:
     commands:
