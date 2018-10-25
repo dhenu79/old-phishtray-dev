@@ -11,7 +11,7 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR ... 
-      - $(aws ecr get-login --region eu-west-2  --no-include-email)
+   #   - $(aws ecr get-login --region eu-west-2  --no-include-email)
       - echo  ******************************************************************************************************
   build:
     commands:
