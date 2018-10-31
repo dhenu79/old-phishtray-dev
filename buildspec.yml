@@ -17,7 +17,8 @@ phases:
     commands:
       - echo Logging.. in to Amazon ECR ...
       - docker --version
-      - ecs-cli compose up -vvv
+      - ecs-cli compose --project-name phishtray-dev-automate --file docker-compose.yml
+ #    - ecs-cli compose up -vvv
  #    - docker build .
  #    - docker image ls
  #    - $(aws ecr get-login --region eu-west-2  --no-include-email)
