@@ -12,13 +12,14 @@ phases:
       - sudo chmod +x /usr/local/bin/ecs-cli
       - echo CHECKING THE ECS_CLI VERSION
       - ecs-cli --version
+      - 
       - echo  ******************************************************************************************************
   pre_build:
     commands:
       - echo Logging.. in to Amazon ECR ...
       - docker --version
-      - ./ecs-cli compose service up
-      - ecs-cli service ps
+ #     - ./ecs-cli compose service up
+ #     - ecs-cli service ps
  #    - ecs-cli compose up -vvv
  #    - docker build .
  #    - docker image ls
