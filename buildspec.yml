@@ -26,12 +26,7 @@ phases:
     commands:
       - echo Logging.. in to Amazon ECR ...
       - docker --version
- #     - ./ecs-cli compose service up
- #     - ecs-cli service ps
- #    - ecs-cli compose up -vvv
- #    - docker build .
- #    - docker image ls
- #    - $(aws ecr get-login --region eu-west-2  --no-include-email)
+      - ecs-cli service ps
       - echo  ******************************************************************************************************
   build:
     commands:
