@@ -12,7 +12,7 @@ phases:
       - sudo chmod +x /usr/local/bin/ecs-cli
       - echo CHECKING THE ECS_CLI VERSION
       - ecs-cli --version
-      - ecs-cli configure profile --profile-name ecs-profile --access-key $aws_access_key_id --secret-key $aws_secret_access_key --region $AWS_REGION --cluster dev-phish --cfn-stack-name dev-phish --default-launch-type EC2 --config-name dev-phish
+      - ecs-cli configure profile --profile-name ecs-profile --access-key $aws_access_key_id --secret-key $aws_secret_access_key --region eu-west-2 --cluster dev-phish --cfn-stack-name dev-phish --default-launch-type EC2 --config-name dev-phish
       - cat /.ecs/config
       - echo  ******************************************************************************************************
   pre_build:
