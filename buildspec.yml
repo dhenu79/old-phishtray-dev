@@ -10,8 +10,6 @@ phases:
       - echo CHECKING THE ECS_CLI VERSION
       - ecs-cli --version
       - echo CONFIGURING ECS-CLI
-      - echo
-      - echo
       - ecs-cli configure profile --profile-name dev-phish --access-key $aws_access_key_id --secret-key $aws_secret_access_key
       - ecs-cli configure --cluster dev-phish --default-launch-type EC2 --region eu-west-2 --config-name dev-phish
       - echo  ******************************************************************************************************
