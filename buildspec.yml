@@ -16,6 +16,7 @@ phases:
       - ecs-cli configure --cluster dev-phish --default-launch-type EC2 --region eu-west-2 --config-name dev-phish
       - cd 
       - pwd
+      - ls -la
 #      - ecs-cli -help
       - echo  ******************************************************************************************************
   pre_build:
