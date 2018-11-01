@@ -14,6 +14,8 @@ phases:
       - ecs-cli --version
       - ecs-cli configure profile --profile-name dev-phish --access-key $aws_access_key_id --secret-key $aws_secret_access_key
       - ecs-cli configure --cluster dev-phish --default-launch-type EC2 --region eu-west-2 --config-name dev-phish
+      - cd 
+      - pwd
 #      - ecs-cli -help
       - echo  ******************************************************************************************************
   pre_build:
