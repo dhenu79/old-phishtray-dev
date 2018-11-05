@@ -19,7 +19,7 @@ phases:
       - echo CONFIGURING ECS-CLI
       - ecs-cli configure profile --profile-name dev-phish --access-key $aws_access_key_id --secret-key $aws_secret_access_key
       - ecs-cli configure --cluster dev-phish --default-launch-type EC2 --region eu-west-2 --config-name dev-phish
-      - eval $(aws ecr get-login --region eu-west-2 --no-include-email)
+   #   - eval $(aws ecr get-login --region eu-west-2 --no-include-email)
       - aws ecr describe-repositories
       - echo  ******************************************************************************************************
   pre_build:
