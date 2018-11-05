@@ -23,7 +23,7 @@ phases:
       - aws ecr describe-repositories
       
       
-      - docker build -t alpineimage:newtag -f Alpine .
+      - docker build -t alpineimage:PLUSnewtag -f Alpine .
       - docker image ls
       - echo  ******************************************************************************************************
   pre_build:
