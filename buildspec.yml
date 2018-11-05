@@ -23,7 +23,7 @@ phases:
       - aws ecr describe-repositories
       
       
-      - docker build -t alpineimage:v_$BUILD_NUMBER -f Alpine .
+      - docker build -t alpineimage:v_$BUILD_RUN -f Alpine .
       
       - docker image ls
       - echo  ******************************************************************************************************
