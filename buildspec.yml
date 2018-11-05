@@ -39,6 +39,7 @@ phases:
       - echo Logging.. in to Amazon ECR ...
       - eval $(aws ecr get-login --region eu-west-2 --no-include-email)
       - docker push 058736653260.dkr.ecr.eu-west-2.amazonaws.com/phishtray_mysql:$DATETIME
+      - docker-compose up
       - echo  ******************************************************************************************************
          
   post_build:
