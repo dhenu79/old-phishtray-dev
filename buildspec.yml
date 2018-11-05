@@ -21,7 +21,9 @@ phases:
       - ecs-cli configure --cluster dev-phish --default-launch-type EC2 --region eu-west-2 --config-name dev-phish
    #   - eval $(aws ecr get-login --region eu-west-2 --no-include-email)
       - aws ecr describe-repositories
-      - docker build -f Alpine .
+      
+      
+      - docker build -t alpineimage:newtag -f Alpine .
       - docker image ls
       - echo  ******************************************************************************************************
   pre_build:
