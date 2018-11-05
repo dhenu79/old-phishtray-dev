@@ -33,11 +33,11 @@ phases:
       - echo Building the TEST ALPINE Docker image..
       - docker build -t alpineimage -f Alpine .
       - docker image ls
-      - docker tag alpineimage:latest 058736653260.dkr.ecr.eu-west-2.amazonaws.com/phishtray_mysql:'time'   
+      - docker tag alpineimage:latest 058736653260.dkr.ecr.eu-west-2.amazonaws.com/phishtray_mysql:$CURRDT   
       - docker image ls
       - echo Logging.. in to Amazon ECR ...
       - eval $(aws ecr get-login --region eu-west-2 --no-include-email)
-      - docker push 058736653260.dkr.ecr.eu-west-2.amazonaws.com/phishtray_mysql:'time'
+      - docker push 058736653260.dkr.ecr.eu-west-2.amazonaws.com/phishtray_mysql:$CURRDT
       - echo  ******************************************************************************************************
          
   post_build:
