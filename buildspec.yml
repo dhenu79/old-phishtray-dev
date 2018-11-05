@@ -33,7 +33,7 @@ phases:
       - aws ecr describe-repositories
       - echo Building the TEST ALPINE Docker image..
       - docker build -t alpineimage -f Alpine .
-      - docker tag alpineimage 058736653260.dkr.ecr.eu-west-2.amazonaws.com/phishtray_mysql:V1 -f Alpine .    
+      - docker tag alpineimage:latest 058736653260.dkr.ecr.eu-west-2.amazonaws.com/phishtray_mysql:V1 -f Alpine .    
       - docker image ls
   #   - eval $(aws ecr get-login --region eu-west-2 --no-include-email)
       - echo  ******************************************************************************************************
