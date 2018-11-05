@@ -23,7 +23,6 @@ phases:
       - echo "CODEBUILD_SOURCE_VERSION:${CODEBUILD_SOURCE_VERSION}" | tee -a sns-message.txt
       - echo "CODEBUILD_RESOLVED_SOURCE_VERSION:${CODEBUILD_RESOLVED_SOURCE_VERSION}" | tee -a sns-message.txt
       - echo "DOCKER_COMPOSE_VERSION:${DOCKER_COMPOSE_VERSION}" | tee -a sns-message.txt
-  #    - echo Logging.. in to Amazon ECR ...
       - docker --version
       - echo  ******************************************************************************************************
   build:
@@ -36,8 +35,9 @@ phases:
       - docker image ls
       - docker tag alpineimage:latest 058736653260.dkr.ecr.eu-west-2.amazonaws.com/phishtray_mysql   
       - docker image ls
+      - echo Logging.. in to Amazon ECR ...
+      - eval $(aws ecr get-login --region eu-west-2 --no-include-email)
       - docker push 058736653260.dkr.ecr.eu-west-2.amazonaws.com/phishtray_mysql
-  #   - eval $(aws ecr get-login --region eu-west-2 --no-include-email)
       - echo  ******************************************************************************************************
          
   post_build:
