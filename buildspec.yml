@@ -33,7 +33,7 @@ phases:
       - aws ecr describe-repositories
       - echo Building the DJANGO AND MYSQL DOCKER IMAGES !!!!
 #     - docker build -t alpineimage -f Alpine .
-      - docker-compose build
+      - docker-compose build.
       - docker image ls
 #      - docker tag alpineimage:latest 058736653260.dkr.ecr.eu-west-2.amazonaws.com/phishtray_mysql:$DATETIME   
       - docker image ls
