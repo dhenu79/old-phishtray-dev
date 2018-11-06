@@ -3,7 +3,7 @@ version: '3.3'
 services:
 
   db:
-    build:
+#    build:
 #      context: .
 #      cache_from:
 #        - ${aws_account_id}.dkr.ecr.${aws_default_region}.amazonaws.com/phishtray_mysql:physhtray_mysql_v1
@@ -19,7 +19,7 @@ services:
     - webnet
 
   django: 
-    build:
+#   build:
 #    context: .
 #      cache_from:
 #        - ${aws_account_id}.dkr.ecr.${aws_default_region}.amazonaws.com/phishtray:django_v1
