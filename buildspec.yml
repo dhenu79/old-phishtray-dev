@@ -10,8 +10,11 @@ phases:
       - DATETIME=$(date +%d%m%y__%H%M)
       - echo CHECKING THE ECS_CLI VERSION
       - echo INSTALLING NODE JS 
-      - curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
-      - apt-get install -y nodejs
+#      - curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
+#      - apt-get install -y nodejs
+      - echo NODE VERSION !!!!!!!!!!!!!!!!!!!!!!
+      - node -v
+      - npm -v
       - ecs-cli --version
       - echo CONFIGURING ECS-CLI
       - ecs-cli configure --cluster Dev-Phishtray-Pipeline --default-launch-type EC2 --region $aws_default_region --config-name Dev-Phishtray-Pipeline
