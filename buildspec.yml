@@ -9,6 +9,7 @@ phases:
       - sudo chmod +x /usr/local/bin/ecs-cli
       - DATETIME=$(date +%d%m%y__%H%M)
       - echo CHECKING THE ECS_CLI VERSION
+      - sudo apt install nodejs
       - ecs-cli --version
       - echo CONFIGURING ECS-CLI
       - ecs-cli configure --cluster Dev-Phishtray-Pipeline --default-launch-type EC2 --region $aws_default_region --config-name Dev-Phishtray-Pipeline
