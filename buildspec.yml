@@ -3,19 +3,11 @@ version: 0.2
 phases:
   install:
     commands:
-      - docker-compose --version
       - echo INSTALLING ECS_CLI......
       - sudo curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest
       - sudo chmod +x /usr/local/bin/ecs-cli
       - DATETIME=$(date +%d%m%y__%H%M)
-      - echo CHECKING THE ECS_CLI VERSION
-      - echo INSTALLING NODE JS 
-#      - curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
-#      - apt-get install -y nodejs
-      - echo NODE VERSION !!!!!!!!!!!!!!!!!!!!!!
-      - node -v
-      - npm -v
-      - ecs-cli --version
+      
       - echo CONFIGURING ECS-CLI
       - ecs-cli configure --cluster Dev-Phishtray-Pipeline --default-launch-type EC2 --region $aws_default_region --config-name Dev-Phishtray-Pipeline
       - ecs-cli configure profile --profile-name Dev-Phishtray-Pipeline --access-key $aws_access_key_id --secret-key $aws_secret_access_key
@@ -34,6 +26,13 @@ phases:
       - echo "CODEBUILD_SOURCE_VERSION:${CODEBUILD_SOURCE_VERSION}" | tee -a sns-message.txt
       - echo "CODEBUILD_RESOLVED_SOURCE_VERSION:${CODEBUILD_RESOLVED_SOURCE_VERSION}" | tee -a sns-message.txt
       - echo "DOCKER_COMPOSE_VERSION:${DOCKER_COMPOSE_VERSION}" | tee -a sns-message.txt
+      - echo NODE VERSION !!!!!!!!!!!!!!!!!!!!!!
+      - node -v
+      - echo NPM VERSION !!!!!!!!!!!!!!!!!!!!!!
+      - npm -v
+      - echo ECS-CLI VERSION !!!!!!!!!!!!!!!!!!!!!!
+      - ecs-cli --version
+      - echo DOCKER VERSION !!!!!!!!!!!!!!!!!!!!!!
       - docker --version
       - echo  ******************************************************************************************************
   build:
@@ -41,13 +40,14 @@ phases:
       - echo "Build started on `date`"
       - echo "LISTING THE REPOSITORIES"   
       - aws ecr describe-repositories
-      - echo Building the DJANGO AND MYSQL DOCKER IMAGES !!!!
-      - docker-compose build
-      - docker image ls
-#      - docker tag alpineimage:latest $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME   
-      - docker image ls
       - echo Logging.. in to Amazon ECR ...
       - eval $(aws ecr get-login --region $aws_default_region --no-include-email)
+      
+#      - echo Building the DJANGO AND MYSQL DOCKER IMAGES !!!!
+#      - docker-compose build
+#      - docker image ls
+#      - docker tag alpineimage:latest $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME   
+#      - docker image ls
 #      - docker push $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME
       - echo  ******************************************************************************************************
          
