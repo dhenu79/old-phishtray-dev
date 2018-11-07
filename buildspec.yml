@@ -32,15 +32,13 @@ phases:
       - echo "LISTING THE REPOSITORIES"   
       - aws ecr describe-repositories
       - echo Building the DJANGO AND MYSQL DOCKER IMAGES !!!!
-#     - docker build -t alpineimage -f Alpine .
       - docker-compose build
       - docker image ls
-#      - docker tag alpineimage:latest 058736653260.dkr.ecr.eu-west-2.amazonaws.com/phishtray_mysql:$DATETIME   
+#      - docker tag alpineimage:latest $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME   
       - docker image ls
       - echo Logging.. in to Amazon ECR ...
-      - eval $(aws ecr get-login --region eu-west-2 --no-include-email)
-#      - docker push 058736653260.dkr.ecr.eu-west-2.amazonaws.com/phishtray_mysql:$DATETIME
-#      - docker-compose up
+      - eval $(aws ecr get-login --region $aws_default_region --no-include-email)
+#      - docker push $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME
       - echo  ******************************************************************************************************
          
   post_build:
