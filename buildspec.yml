@@ -11,8 +11,7 @@ phases:
       - echo $VERSION
       - echo CONFIGURING ECS-CLI
       - ecs-cli configure --cluster Dev-Phishtray-Pipeline --default-launch-type EC2 --region $aws_default_region --config-name Dev-Phishtray-Pipeline
-      - ecs-cli configure profile --profile-name Dev-Phishtray-Pipeline --access-key $aws_access_key_id --secret-key $aws_secret_access_key
-     
+      - ecs-cli configure profile --profile-name Dev-Phishtray-Pipeline --access-key $aws_access_key_id --secret-key $aws_secret_access_key   
       - echo  ******************************************************************************************************
   
   pre_build:
@@ -35,9 +34,9 @@ phases:
       - echo DOCKER VERSION !!!!!!!!!!!!!!!!!!!!!!
       - docker --version
       - echo DOCKER COMPOSE VERSION !!!!!!!!!!!!!!
-      - docker-compose -v
-      
+      - docker-compose -v      
       - echo  ******************************************************************************************************
+  
   build:
     commands:
       - echo "Build started on `date`"
@@ -48,7 +47,7 @@ phases:
       
 #      - echo Building the DJANGO AND MYSQL DOCKER IMAGES !!!!
       - docker-compose build
-#      - docker image ls
+      - docker image ls
 #      - docker tag alpineimage:latest $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME   
 #      - docker image ls
 #      - docker push $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME
