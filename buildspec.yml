@@ -23,18 +23,14 @@ phases:
       - echo "CODEBUILD_SOURCE_VERSION:${CODEBUILD_SOURCE_VERSION}" | tee -a sns-message.txt
       - echo "CODEBUILD_RESOLVED_SOURCE_VERSION:${CODEBUILD_RESOLVED_SOURCE_VERSION}" | tee -a sns-message.txt
       - echo "DOCKER_COMPOSE_VERSION:${DOCKER_COMPOSE_VERSION}" | tee -a sns-message.txt   
+      - echo "DOCKER_VERSION:${DOCKER_VERSION}" | tee -a sns-message.txt 
+      - echo "ECS-CLI_VERSION:${ECS-CLI_VERSION}" | tee -a sns-message.txt
       - pwd && find sns-message.txt && cat sns-message.txt
       
       - echo NODE VERSION !!!!!!!!!!!!!!!!!!!!!!!!
       - node --version
       - echo NPM VERSION !!!!!!!!!!!!!!!!!!!!!!!!!
-      - npm --version
-      - echo ECS-CLI VERSION !!!!!!!!!!!!!!!!!!!!!
-      - ecs-cli --version
-      - echo DOCKER VERSION !!!!!!!!!!!!!!!!!!!!!!
-      - docker --version
-      - echo DOCKER COMPOSE VERSION !!!!!!!!!!!!!!
-      - docker-compose -v      
+      - npm --version  
       - echo  ******************************************************************************************************
   
   build:
