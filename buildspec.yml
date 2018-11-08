@@ -27,9 +27,9 @@ phases:
       - pwd && find sns-message.txt && cat sns-message.txt
       
       - echo NODE VERSION !!!!!!!!!!!!!!!!!!!!!!
-      - node -v
+      - node -version
       - echo NPM VERSION !!!!!!!!!!!!!!!!!!!!!!
-      - npm -v
+      - npm -version
       - echo ECS-CLI VERSION !!!!!!!!!!!!!!!!!!!!!!
       - ecs-cli --version
       - echo DOCKER VERSION !!!!!!!!!!!!!!!!!!!!!!
