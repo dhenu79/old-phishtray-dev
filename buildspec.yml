@@ -24,7 +24,7 @@ phases:
       - echo "CODEBUILD_RESOLVED_SOURCE_VERSION:${CODEBUILD_RESOLVED_SOURCE_VERSION}" | tee -a sns-message.txt
       - echo "DOCKER_COMPOSE_VERSION:${DOCKER_COMPOSE_VERSION}" | tee -a sns-message.txt
       
-      - find sns-message.txt && cat sns-message.txt
+#      - find sns-message.txt && cat sns-message.txt
       
       - echo NODE VERSION !!!!!!!!!!!!!!!!!!!!!!
       - node -v
