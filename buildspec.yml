@@ -25,12 +25,9 @@ phases:
       - echo "DOCKER_COMPOSE_VERSION:${DOCKER_COMPOSE_VERSION}" | tee -a sns-message.txt   
       - echo "DOCKER_VERSION:${DOCKER_VERSION}" | tee -a sns-message.txt 
       - echo "ECS-CLI_VERSION:${ECS-CLI_VERSION}" | tee -a sns-message.txt
-      - pwd && find sns-message.txt && cat sns-message.txt
-      
-      - echo NODE VERSION !!!!!!!!!!!!!!!!!!!!!!!!
-      - node --version
-      - echo NPM VERSION !!!!!!!!!!!!!!!!!!!!!!!!!
-      - npm --version  
+      - echo "NODE_VERSION:${NODE_VERSION}" | tee -a sns-message.txt
+      - echo "NPM_VERSION:${NPM_VERSION}" | tee -a sns-message.txt
+      - pwd && find sns-message.txt && cat sns-message.txt 
       - echo  ******************************************************************************************************
   
   build:
