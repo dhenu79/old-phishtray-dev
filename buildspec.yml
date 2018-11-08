@@ -48,7 +48,7 @@ phases:
 #      - docker tag alpineimage:latest $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME   
 #      - docker image ls
 #      - docker push $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME
-      - echo  ******************************************************************************************************
+      - echo  *******************************************************************************************************
          
   post_build:
     commands:
