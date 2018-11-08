@@ -36,7 +36,7 @@ phases:
       - aws ecr describe-repositories
       - echo Logging.. in to Amazon ECR ...
       - eval $(aws ecr get-login --region $aws_default_region --no-include-email)
-      
+      - ecs-cli images --region $aws_default_region
 #      - echo Building the DJANGO AND MYSQL DOCKER IMAGES !!!!
       - docker-compose build
       - docker image ls
