@@ -22,16 +22,16 @@ phases:
       - echo "CODEBUILD_SOURCE_REPO_URL:${CODEBUILD_SOURCE_REPO_URL}" | tee -a sns-message.txt
       - echo "CODEBUILD_SOURCE_VERSION:${CODEBUILD_SOURCE_VERSION}" | tee -a sns-message.txt
       - echo "CODEBUILD_RESOLVED_SOURCE_VERSION:${CODEBUILD_RESOLVED_SOURCE_VERSION}" | tee -a sns-message.txt
-      - echo "DOCKER_COMPOSE_VERSION:${DOCKER_COMPOSE_VERSION}" | tee -a sns-message.txt   
+      - echo "docker compose version :${DOCKER_COMPOSE_VERSION}" | tee -a sns-message.txt   
+#      - docker --version
+#      - ecs-cli --version
+#      - node --version
+#      - npm --version
+      - echo "docker version :${DOCKER_VERSION}" | tee -a sns-message.txt 
+      - echo "ecs cli version :${ECS_CLI_VERSION}" | tee -a sns-message.txt
+      - echo "node js version :${NODE_VERSION}" | tee -a sns-message.txt
+      - echo "npn version :${NPM_VERSION}" | tee -a sns-message.txt 
       - pwd && find sns-message.txt && cat sns-message.txt
-      - docker --version
-      - ecs-cli --version
-      - node --version
-      - npm --version
-#      - echo "DOCKER_VERSION:${DOCKER_VERSION}" | tee -a sns-message.txt 
-#      - echo "${ecs_cli_VERSION}" | tee -a sns-message.txt
-#      - echo "${NODE_VERSION}" | tee -a sns-message.txt
-#      - echo "${NPM_VERSION}" | tee -a sns-message.txt 
       - echo  ******************************************************************************************************
   
   build:
