@@ -16,6 +16,30 @@ phases:
   
   pre_build:
     commands:
+#      - echo "Build started on `date`"
+#      - echo "LISTING THE REPOSITORIES"   
+#      - aws ecr describe-repositories
+      - echo Logging.. in to Amazon ECR ...
+      - eval $(aws ecr get-login --region $aws_default_region --no-include-email)
+      - aws ecs list-container-instances --cluster Dev-Phishtray-Pipeline
+      - ecs-cli compose create [--verbose] [--project-name new-codebuild] [--task-role-arn arn:aws:iam::$aws_account_id:role/service-role/codebuild-new-codebuild-service-role] [--region $aws_default_region] [--cluster-config Dev-Phishtray-Pipeline] [-ecs-profile Dev-Phishtray-Pipeline] [--cluster Dev-Phishtray-Pipeline]
+#      - ecs-cli compose --verbose --project-name new-codebuild --task-role-arn arn:aws:iam::$aws_account_id:role/service-role/codebuild-new-codebuild-service-role --region $aws_default_region --cluster-config Dev-Phishtray-Pipeline --ecs-profile Dev-Phishtray-Pipeline --cluster Dev-Phishtray-Pipeline
+#       listing images using the ecs-cli.       
+#      - ecs-cli images --region $aws_default_region
+
+#      - echo Building the DJANGO AND MYSQL DOCKER IMAGES !!!!
+ #     - docker-compose build
+ #     - docker image ls
+#      - docker tag alpineimage:latest $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME   
+#      - docker image ls
+#      - docker push $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME
+  
+  build:
+    commands:
+      - echo  *******************************************************************************************************
+         
+  post_build:
+    commands:
       - echo Creating notification message file ..
       - echo "CODEBUILD_INITIATOR:${CODEBUILD_INITIATOR}" | tee -a sns-message.txt
       - echo "CODEBUILD_BUILD_ID:${CODEBUILD_BUILD_ID}" | tee -a sns-message.txt
@@ -29,28 +53,4 @@ phases:
       - echo "npn version :" && npm -v
       - echo  ******************************************************************************************************
       
-  
-  build:
-    commands:
-      - echo "Build started on `date`"
-      - echo "LISTING THE REPOSITORIES"   
-      - aws ecr describe-repositories
-      - echo Logging.. in to Amazon ECR ...
-      - eval $(aws ecr get-login --region $aws_default_region --no-include-email)
-#      - ecs-cli compose --verbose --project-name new-codebuild --task-role-arn arn:aws:iam::$aws_account_id:role/service-role/codebuild-new-codebuild-service-role --region $aws_default_region --cluster-config Dev-Phishtray-Pipeline --ecs-profile Dev-Phishtray-Pipeline --cluster Dev-Phishtray-Pipeline
-
-
-#       listing images using the ecs-cli.       
-      - ecs-cli images --region $aws_default_region
-
-#      - echo Building the DJANGO AND MYSQL DOCKER IMAGES !!!!
- #     - docker-compose build
- #     - docker image ls
-#      - docker tag alpineimage:latest $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME   
-#      - docker image ls
-#      - docker push $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME
-      - echo  *******************************************************************************************************
-         
-  post_build:
-    commands:
 
