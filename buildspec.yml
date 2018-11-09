@@ -44,8 +44,8 @@ phases:
       - ecs-cli images --region $aws_default_region
 
 #      - echo Building the DJANGO AND MYSQL DOCKER IMAGES !!!!
-      - docker-compose build
-      - docker image ls
+ #     - docker-compose build
+ #     - docker image ls
 #      - docker tag alpineimage:latest $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME   
 #      - docker image ls
 #      - docker push $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME
