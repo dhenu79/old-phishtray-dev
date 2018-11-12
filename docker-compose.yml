@@ -29,3 +29,7 @@ services:
 
 networks:
   webnet:
+  
+volumes:
+  db-volume
+  django-volume
