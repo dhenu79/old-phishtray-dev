@@ -9,8 +9,8 @@ run_params:
   network_configuration:
     awsvpc_configuration:
       subnets:
-        - $eu-west-2b-subnet
-        - $eu-west-2a-subnet
+        - $eu_west_2b_subnet
+        - $eu_west_2a_subnet
       security_groups:
         - $secgrp
       assign_public_ip: ENABLED
