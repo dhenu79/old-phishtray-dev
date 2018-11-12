@@ -10,8 +10,8 @@ phases:
       - VERSION="$(git log --pretty=format:'%h' -n 1) $(date +%d:%m:%Y*****%H:%M)"
       - echo $VERSION
       - echo CONFIGURING ECS-CLI
-      - ecs-cli configure --cluster Dev-Phishtray-Pipeline --default-launch-type EC2 --region $aws_default_region --config-name Dev-Phishtray-Pipeline
-      - ecs-cli configure profile --profile-name Dev-Phishtray-Pipeline --access-key $aws_access_key_id --secret-key $aws_secret_access_key   
+      - ecs-cli configure --cluster $cluster_name --default-launch-type EC2 --region $aws_default_region --config-name $config_name
+      - ecs-cli configure profile --profile-name $profile_name --access-key $aws_access_key_id --secret-key $aws_secret_access_key   
       - echo  ******************************************************************************************************
   
   pre_build:
@@ -21,7 +21,10 @@ phases:
 #      - aws ecr describe-repositories
       - echo Logging.. in to Amazon ECR ...
       - eval $(aws ecr get-login --region $aws_default_region --no-include-email)
-      - aws ecs list-container-instances --cluster Dev-Phishtray-Pipeline
+      - aws ecs list-container-instances --cluster $cluster_name
+      - ecs-cli compose up [--region $aws_default_region] [--cluster $cluster_name] [--launch-type EC2]
+      
+
 #      - es-cli ps
 #      - ecs-cli compose create [--verbose] [--project-name new-codebuild] [--task-role-arn arn:aws:iam::$aws_account_id:role/service-role/codebuild-new-codebuild-service-role] [--region $aws_default_region] [--cluster-config Dev-Phishtray-Pipeline] [-ecs-profile Dev-Phishtray-Pipeline] [--cluster Dev-Phishtray-Pipeline]
 #      - ecs-cli compose --verbose --project-name new-codebuild --task-role-arn arn:aws:iam::$aws_account_id:role/service-role/codebuild-new-codebuild-service-role --region $aws_default_region --cluster-config Dev-Phishtray-Pipeline --ecs-profile Dev-Phishtray-Pipeline --cluster Dev-Phishtray-Pipeline
