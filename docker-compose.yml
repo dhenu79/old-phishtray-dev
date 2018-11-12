@@ -31,5 +31,5 @@ networks:
   webnet:
   
 volumes:
-  /volumes/db_volume:
-  /volumes/django_volume:
+  volumes/db_volume:
+  volumes/django_volume:
