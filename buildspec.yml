@@ -25,6 +25,7 @@ phases:
       - aws ecs list-container-instances --cluster $cluster_name
       - ecs-cli compose up [--verbose] [--region $aws_default_region] [--cluster $cluster_name] [--launch-type EC2]
 #      - make django-run
+      - docker volume ls
       - ecs-cli ps
 #      - ecs-cli compose create [--verbose] [--project-name new-codebuild] [--task-role-arn arn:aws:iam::$aws_account_id:role/service-role/codebuild-new-codebuild-service-role] [--region $aws_default_region] [--cluster-config Dev-Phishtray-Pipeline] [-ecs-profile Dev-Phishtray-Pipeline] [--cluster Dev-Phishtray-Pipeline]
 #      - ecs-cli compose --verbose --project-name new-codebuild --task-role-arn arn:aws:iam::$aws_account_id:role/service-role/codebuild-new-codebuild-service-role --region $aws_default_region --cluster-config Dev-Phishtray-Pipeline --ecs-profile Dev-Phishtray-Pipeline --cluster Dev-Phishtray-Pipeline
