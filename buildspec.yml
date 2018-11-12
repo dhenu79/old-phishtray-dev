@@ -22,7 +22,7 @@ phases:
       - echo Logging.. in to Amazon ECR ...
       - eval $(aws ecr get-login --region $aws_default_region --no-include-email)
       - aws ecs list-container-instances --cluster $cluster_name
-      - ecs-cli compose up [--region $aws_default_region] [--cluster $cluster_name] [--launch-type EC2]
+#      - ecs-cli compose up [--region $aws_default_region] [--cluster $cluster_name] [--launch-type EC2]
       
 
 #      - es-cli ps
