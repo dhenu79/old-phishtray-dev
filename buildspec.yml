@@ -1,6 +1,8 @@
 version: 0.2
 
 phases:
+
+
   install:
     commands:
       - echo INSTALLING ECS_CLI
@@ -11,35 +13,22 @@ phases:
       - echo $VERSION
       - echo CONFIGURING ECS-CLI
       - ecs-cli configure --cluster $cluster_name --default-launch-type EC2 --region $aws_default_region --config-name $config_name
-      - ecs-cli configure profile --profile-name $profile_name --access-key $aws_access_key_id --secret-key $aws_secret_access_key   
-      - echo  ******************************************************************************************************
+      - ecs-cli configure profile --profile-name $profile_name --access-key $aws_access_key_id --secret-key $aws_secret_access_key        
       - ecs-cli -v
-  
+      - echo  ******************************************************************************************************
+ 
+ 
   pre_build:
     commands:
-#      - echo "Build started on `date`"
-#      - echo "LISTING THE REPOSITORIES"   
-#      - aws ecr describe-repositories
+
       - echo Logging.. in to Amazon ECR ...
       - eval $(aws ecr get-login --region $aws_default_region --no-include-email)
       - aws ecs list-container-instances --cluster $cluster_name
       - ecs-cli compose up [--verbose] [--region $aws_default_region] [--cluster $cluster_name] [--launch-type EC2]
-      - make django-run
       - docker volume ls
       - ecs-cli ps
-#      - ecs-cli compose create [--verbose] [--project-name new-codebuild] [--task-role-arn arn:aws:iam::$aws_account_id:role/service-role/codebuild-new-codebuild-service-role] [--region $aws_default_region] [--cluster-config Dev-Phishtray-Pipeline] [-ecs-profile Dev-Phishtray-Pipeline] [--cluster Dev-Phishtray-Pipeline]
-#      - ecs-cli compose --verbose --project-name new-codebuild --task-role-arn arn:aws:iam::$aws_account_id:role/service-role/codebuild-new-codebuild-service-role --region $aws_default_region --cluster-config Dev-Phishtray-Pipeline --ecs-profile Dev-Phishtray-Pipeline --cluster Dev-Phishtray-Pipeline
-#       listing images using the ecs-cli.       
-#      - ecs-cli images --region $aws_default_region
-
-#      - echo Building the DJANGO AND MYSQL DOCKER IMAGES !!!!
- #     - docker-compose build
- #     - docker image ls
-#      - docker tag alpineimage:latest $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME   
-#      - docker image ls
-#      - docker push $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME
-  
-  build:
+      
+ build:
     commands:
       - echo  *******************************************************************************************************
          
@@ -56,6 +45,29 @@ phases:
       - echo "" && ecs-cli --version
       - echo "node js version :" && node -v
       - echo "npn version :" && npm -v
+      - make django-run
       - echo  ******************************************************************************************************
+
+
+
+
+
+
+#      - make django-run
+#      - ecs-cli compose create [--verbose] [--project-name new-codebuild] [--task-role-arn arn:aws:iam::$aws_account_id:role/service-role/codebuild-new-codebuild-service-role] [--region $aws_default_region] [--cluster-config Dev-Phishtray-Pipeline] [-ecs-profile Dev-Phishtray-Pipeline] [--cluster Dev-Phishtray-Pipeline]
+#      - ecs-cli compose --verbose --project-name new-codebuild --task-role-arn arn:aws:iam::$aws_account_id:role/service-role/codebuild-new-codebuild-service-role --region $aws_default_region --cluster-config Dev-Phishtray-Pipeline --ecs-profile Dev-Phishtray-Pipeline --cluster Dev-Phishtray-Pipeline
+#       listing images using the ecs-cli.       
+#      - ecs-cli images --region $aws_default_region
+#      - echo "Build started on `date`"
+#      - echo "LISTING THE REPOSITORIES"   
+#      - aws ecr describe-repositories
+#      - echo Building the DJANGO AND MYSQL DOCKER IMAGES !!!!
+ #     - docker-compose build
+ #     - docker image ls
+#      - docker tag alpineimage:latest $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME   
+#      - docker image ls
+#      - docker push $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:$DATETIME
+  
+ 
       
 
