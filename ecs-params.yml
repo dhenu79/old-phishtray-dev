@@ -1,5 +1,12 @@
 version: 1
 task_definition:
+  services:
+    db:
+      cpu_shares: 128
+      mem_limit: 480MB
+    dgango:
+      cpu_shares: 128
+      mem_limit: 128MB
   task_execution_role: ecsTaskExecutionRole
   ecs_network_mode: bridge
   task_size:
@@ -13,4 +20,3 @@ run_params:
         - $eu_west_2a_subnet
       security_groups:
         - $secgrp
-      assign_public_ip: ENABLED
