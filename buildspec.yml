@@ -41,7 +41,7 @@ phases:
       - echo "" && ecs-cli --version
       - echo "node js version :" && node -v
       - echo "npn version :" && npm -v
-#      - make django-run
+      - make django-run
       - ecs-cli ps  
       - echo  ******************************************************************************************************
 
