@@ -44,6 +44,7 @@ phases:
       - echo "node js version :" && node -v
       - echo "npn version :" && npm -v
       - ecs-cli compose --debug up --region $aws_default_region --cluster $cluster_name --launch-type EC2
+      - docker ps -a
       - make django-makemigrations
       - make django-migrate
       - make django-run
