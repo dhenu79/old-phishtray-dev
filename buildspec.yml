@@ -23,9 +23,8 @@ phases:
       - ls -l
       - eval $(aws ecr get-login --region $aws_default_region --no-include-email)
       - aws ecs list-container-instances --cluster $cluster_name
-
       - docker volume ls
-      - ecs-cli ps      
+#      - ecs-cli ps      
   build:
     commands:
       - echo  *******************************************************************************************************
@@ -43,7 +42,11 @@ phases:
       - echo "" && ecs-cli --version
       - echo "node js version :" && node -v
       - echo "npn version :" && npm -v
-      - ecs-cli compose --debug up --region $aws_default_region --cluster $cluster_name --launch-type EC2
+      - ecs-cli compose --verbose up --region $aws_default_region --cluster $cluster_name --launch-type EC2
+
+
+
+
 #      - docker ps -a
 #      - make django-makemigrations
 #      - make django-migrate
