@@ -16,7 +16,7 @@ services:
 
   django:
     image: $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray:DjangoV2
-    command: dockerize -wait tcp://db:3306 -timeout 60s bash -c "tail -f /dev/null"
+    command: bash -c "tail -f /dev/null"
     ports:
     - "9000:9000"
     - "9022:22"
