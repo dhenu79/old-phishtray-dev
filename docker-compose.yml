@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
 
@@ -24,8 +24,6 @@ services:
     - django:/usr/src/app
     networks:
     - webnet
-    wait:
-    - db
     depends_on:
     - db
 
