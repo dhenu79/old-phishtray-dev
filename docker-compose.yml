@@ -3,7 +3,7 @@ version: '2'
 services:
 
   db:
-    image: $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray_mysql:physhtray_mysql_v1
+    image: mysql:5.7
     volumes:
     - ./db:/var/lib/mysql
     ports:
@@ -15,13 +15,13 @@ services:
     - webnet
 
   django:
-    image: $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray:django_v1
-    command: bash -c "python3.6 manage.py makemigrations; python3.6 manage.py migrate; python3.6 manage.py runserver 0:9000"
+    build: .
+    command: dockerize -wait tcp://db:3306 -timeout 60s bash -c "python3.6 manage.py makemigrations; python3.6 manage.py migrate; tail -f /dev/null"
     ports:
     - "9000:9000"
     - "9022:22"
     volumes:
-    - ./django:/usr/src/app
+    - .:/usr/src/app
     networks:
     - webnet
     depends_on:
@@ -29,7 +29,3 @@ services:
 
 networks:
   webnet:
- 
-volumes:
-  db: 
-  django:
