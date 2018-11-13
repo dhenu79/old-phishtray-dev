@@ -24,6 +24,8 @@ services:
     - django:/usr/src/app
     networks:
     - webnet
+    wait:
+    - db
     depends_on:
     - db
 
