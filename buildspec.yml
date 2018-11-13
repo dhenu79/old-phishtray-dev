@@ -18,15 +18,13 @@ phases:
  
   pre_build:
     commands:
-
       - echo Logging.. in to Amazon ECR ...
       - eval $(aws ecr get-login --region $aws_default_region --no-include-email)
       - aws ecs list-container-instances --cluster $cluster_name
       - ecs-cli compose up [--verbose] [--region $aws_default_region] [--cluster $cluster_name] [--launch-type EC2]
       - docker volume ls
-      - ecs-cli ps
-      
- build:
+      - ecs-cli ps      
+  build:
     commands:
       - echo  *******************************************************************************************************
          
