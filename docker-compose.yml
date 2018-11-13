@@ -16,7 +16,7 @@ services:
 
   django:
     image: $aws_account_id.dkr.ecr.$aws_default_region.amazonaws.com/phishtray:DjangoV2
-    command: bash -c "tail -f /dev/null"
+    command: bash -c "python3.6 /usr/src/app/manage.py makemigrations; python3.6 /usr/src/app/manage.py migrate; python3.6 /usr/src/app/manage.py runserver 0:9000"
     ports:
     - "9000:9000"
     - "9022:22"
