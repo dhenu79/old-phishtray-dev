@@ -12,8 +12,7 @@ phases:
       - echo CONFIGURING ECS-CLI
       - ecs-cli configure --cluster $cluster_name --default-launch-type EC2 --region $aws_default_region --config-name $config_name
       - ecs-cli configure profile --profile-name $profile_name --access-key $aws_access_key_id --secret-key $aws_secret_access_key        
-      - ecs-cli -v
- 
+      - ecs-cli -v 
   pre_build:
     commands:
       - echo Logging.. in to Amazon ECR ...
@@ -23,7 +22,9 @@ phases:
       - aws ecs list-container-instances --cluster $cluster_name
       - docker volume ls   
   build:
-    commands:       
+    commands: 
+      - ecs-cli compose --verbose up --region $aws_default_region --cluster $cluster_name --launch-type EC2
+      - ecs-cli ps 
   post_build:
     commands: 
       - ecs-cli compose --verbose up --region $aws_default_region --cluster $cluster_name --launch-type EC2
