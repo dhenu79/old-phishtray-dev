@@ -30,7 +30,7 @@ phases:
       - ecs-cli ps 
 
 
-#      - echo "" && docker -v 
+#      - echo "" && docker -v ..
 #      - echo "" && ecs-cli --version
 #      - echo "node js version :" && node -v
 #     - echo "npn version :" && npm -v
