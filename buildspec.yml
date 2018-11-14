@@ -27,5 +27,3 @@ phases:
       - ecs-cli ps 
   post_build:
     commands: 
-      - ecs-cli compose --verbose up --region $aws_default_region --cluster $cluster_name --launch-type EC2
-      - ecs-cli ps
