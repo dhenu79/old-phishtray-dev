@@ -22,7 +22,7 @@ phases:
       - pwd 
       - ls -l
       - eval $(aws ecr get-login --region $aws_default_region --no-include-email)
-      - aws ecs list-container-instances --cluster $cluster_name > | tee -a sns-message.txt
+      - aws ecs list-container-instances --cluster $cluster_name | tee -a sns-message.txt
       - cat sns-message.txt
       - docker volume ls
 #      - ecs-cli ps      
