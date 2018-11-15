@@ -8,20 +8,23 @@ phases:
       - sudo chmod +x /usr/local/bin/ecs-cli
       - ecs-cli -v
       - ecs-cli configure --cluster $cluster_name --default-launch-type EC2 --region $aws_default_region --config-name $config_name
-      - ecs-cli configure profile --profile-name $profile_name --access-key $aws_access_key_id --secret-key $aws_secret_access_key        
+      - ecs-cli configure profile --profile-name $profile_name --access-key $aws_access_key_id --secret-key $aws_secret_access_key
       - DATETIME=$(date +%d%m%y__%H%M)
       - VERSION="$(git log --pretty=format:'%h' -n 1) $(date +%d:%m:%Y*****%H:%M)"
-      - echo $VERSION 
+      - echo $VERSION
       - echo CONFIGURING ECS-CLI
+
 
   pre_build:
     commands:
       - echo Logging.. in to Amazon ECR ...
-      - eval $(aws ecr get-login --region $aws_default_region --no-include-email) 
-      - aws ecr create-repository --repository-name phishtray/db
-      - aws ecr create-repository --repository-name phishtray/django
+      - eval $(aws ecr get-login --region $aws_default_region --no-include-email)
+      - aws ecs list-clusters
+      - aws ecs describe-clusters --clusters PHISHTRAYdevelopment
+      - aws ecr describe-repositories
+
   build:
-    commands: 
-    
+    commands:
+
   post_build:
-    commands: 
+    commands:
