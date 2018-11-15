@@ -18,8 +18,8 @@ phases:
     commands:
       - echo Logging.. in to Amazon ECR ...
       - eval $(aws ecr get-login --region $aws_default_region --no-include-email) 
-      - aws ecr create-repository --repository-name PHISHTRAY/DB
-      - aws ecr create-repository --repository-name PHISHTRAY/Django
+      - aws ecr create-repository --repository-name phishtray/db
+      - aws ecr create-repository --repository-name phishtray/django
   build:
     commands: 
     
